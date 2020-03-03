@@ -1,0 +1,23 @@
+- echo "***s390x start"
+
+- echo "***Downloading qemu..."
+
+- wget https://github.com/multiarch/qemu-user-static/releases/download/v4.0.0/qemu-s390x-static.tar.gz
+
+- tar xvfz qemu-s390x-static.tar.gz
+
+
+
+- echo "***QEMU run..."
+
+- docker run --rm --privileged multiarch/qemu-user-static:register
+
+
+
+- echo "***docker build s390x"
+
+- docker build -f Dockerfile.s390x -t fanzh8docker/ci:s390x .
+
+- echo "***docker push s390x"
+
+- docker push fanzh8docker/ci:s390x
